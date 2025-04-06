@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Website Name</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <div class="sidebar" id="sidebar">
+        <button class="close-btn" onclick="toggleSidebar()">×</button>
+        <nav id="navbar">
+            <ul>
+                <li><a href="#welcome-section" class="bold-link">About</a></li>
+                <li><a href="#projects" class="bold-link">Work</a></li>
+                <li><a href="#contact" class="bold-link">Contact</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <button class="sidebar-toggle" onclick="toggleSidebar()">☰</button>
+
+    <section id="welcome-section">
+        <div class="welcome-content">
+            <h1 class="yusuf">I am Yusuf</h1>
+            <h3>A Frontend Developer</h3>
+            <p>I am a skilled front-end developer with expertise in creating responsive and user-friendly web interfaces. I have a strong understanding of HTML, CSS, and JavaScript, which allows me to design visually appealing websites that enhance user experience. I am passionate about staying updated on the latest trends and technologies in front-end development to deliver high-quality and innovative solutions.</p>
+            <div class="btn-box">
+                <a href="#">HIRE ME</a>
+                <a href="#">LET'S TALK</a>
+            </div>
+        </div>
+        <div class="image">
+            <img src="https://lh3.googleusercontent.com/pw/AP1GczPxGZQu_szeW6LKO5lswry1vYrSpAkIAKMsy_FrafSRXgvpaph4tR0LSY1X3kynp_dJGrh_t4pbqLllbxoqJONvdGbZAzhLC8fRMGxAx8fMBNKJMrMOV7HeZvvK9XpA3GPbmcIb0jKgDP6cXjZJwkw=w591-h887-s-no-gm?authuser=0" alt="My Image">
+        </div>
+    </section>
+
+    <section id="projects" class="project-tile">
+        <h2 class="project-tile">HERE ARE SOME OF MY PROJECTS</h2>
+        <div class="projects-container">
+            <div class="grid-item">
+                <a href="https://www.freecodecamp.org/learn/2022/responsive-web-design/build-a-product-landing-page-project/build-a-product-landing-page" target="_blank">
+                    <img src="https://c8.alamy.com/comp/PCYG1J/pizzeria-fast-food-logo-or-label-happy-chef-holding-pizza-and-scapula-in-hands-vector-illustration-PCYG1J.jpg" />
+                    <p>Product Landing Page</p>
+                </a>
+            </div>
+            <div class="grid-item">
+                <a href="https://www.freecodecamp.org/learn/2022/responsive-web-design/build-a-tribute-page-project/build-a-tribute-page" target="_blank">
+                    <img src="https://cdna.artstation.com/p/assets/images/images/020/793/830/large/marwan-musa-khalid-ibn-al-walid.jpg?1569206393" alt="Tribute Page Project" />
+                    <p>Tribute Page</p>
+                </a>
+            </div>
+            <div class="grid-item">
+                <a href="https://www.freecodecamp.org/learn/2022/responsive-web-design/build-a-survey-form-project/build-a-survey-form" id="profile-link" target="_blank">
+                    <img src="https://cdn.freecodecamp.org/testable-projects-fcc/images/survey-form-background.jpeg" />
+                    <p>Survey Form</p>
+                </a>
+            </div>
+            <div class="grid-item">
+                <a href="https://www.freecodecamp.org/learn/2022/responsive-web-design/build-a-technical-documentation-page-project/build-a-technical-documentation-page" target="_blank">
+                    <img src="https://th.bing.com/th/id/OIP.p7BWc0DN49BdQ_luFhLNhQHaEK?rs=1&pid=ImgDetMain" />
+                    <p>Technical Documentation Page</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <br>
+
+    <section id="contact" class="contact-section">
+        <h2 class="project-tile">LET'S GET IN TOUCH</h2>
+        <div class="contact-link">
+            <a href="https://www.facebook.com/your-profile"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://twitter.com/your-profile"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.linkedin.com/in/your-profile"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+    </section>
+
+    <script>
+        function toggleSidebar() {
+            var sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('active');
+        }
+    </script>
+
+</body>
+</html>
