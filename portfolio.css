@@ -2,13 +2,56 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Inter', sans-serif;
 }
 
 body {
     background-color: #0a0a0a;
     color: #ffffff;
     line-height: 1.6;
+    font-family: Arial, sans-serif; /* Default font */
+}
+
+/* Sidebar Styles */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: -260px; /* Initially hide the sidebar off-screen */
+    width: 250px; /* Width of the sidebar */
+    height: 100%;
+    background-color: rgba(10, 10, 10, 0.9); /* Slight transparency */
+    overflow-y: auto; /* Allow scrolling if content overflows */
+    transition: left 0.3s ease; /* Slide-in effect */
+    z-index: 999; /* Ensure it's above other content */
+}
+
+.sidebar.active {
+    left: 0; /* Slide in the sidebar on activation */
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 36px;
+    color: #ff4d00; /* Color of the close button */
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+/* Toggle Button Styles */
+.sidebar-toggle {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background-color: #ff4d00;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 1000; /* Ensure button is on top */
 }
 
 /* Header and Navigation */
@@ -16,13 +59,13 @@ header {
     position: fixed;
     top: 0;
     width: 100%;
-    padding: 1.5rem 4rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     background-color: rgba(10, 10, 10, 0.95);
     backdrop-filter: blur(10px);
     z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 4rem;
 }
 
 .logo {
@@ -32,22 +75,27 @@ header {
     letter-spacing: 2px;
 }
 
+#navbar {
+    display: block; /* Ensure navbar is displayed in sidebar */
+}
+
 #navbar ul {
-    display: flex;
-    gap: 2.5rem;
-    list-style: none;
+    padding: 20px; /* Add padding for the links */
+}
+
+#navbar li {
+    margin: 15px 0; /* Space between navbar items */
 }
 
 #navbar a {
-    color: #ffffff;
-    text-decoration: none;
-    font-size: 1rem;
-    font-weight: 500;
-    transition: color 0.3s ease;
+    color: #ffffff; /* White text color for better contrast */
+    text-decoration: none; /* Remove underline */
+    font-size: 1rem; /* Font size for links */
+    transition: color 0.3s; /* Smooth color transition */
 }
 
 #navbar a:hover {
-    color: #ff4d00;
+    color: #ff4d00; /* Change color on hover */
 }
 
 /* Welcome Section */
@@ -57,10 +105,9 @@ header {
     grid-template-columns: 1fr 1fr;
     gap: 2rem;
     padding: 6rem 4rem;
-    position: relative;
-    overflow: hidden;
 }
 
+/* Welcome Content */
 .welcome-content {
     display: flex;
     flex-direction: column;
@@ -82,12 +129,7 @@ h3 {
     margin-bottom: 2rem;
 }
 
-.welcome-text {
-    max-width: 600px;
-    margin-top: 2rem;
-}
-
-.welcome-text p {
+.welcome-content p {
     color: #aaa;
     margin-bottom: 2rem;
     font-size: 1.1rem;
@@ -95,13 +137,13 @@ h3 {
 
 .btn-box {
     display: flex;
-    gap: 1.5rem;
+    gap: 1.5rem; /* Use of flex gap to space buttons evenly */
 }
 
 .btn-box a {
-    padding: 0.8rem 2rem;
-    border: 2px solid #ff4d00;
-    border-radius: 5px;
+    padding: 0.8rem 2rem; /* New padding values */
+    border: 2px solid #ff4d00; /* Updated border color */
+    border-radius: 5px; /* Adjusted border-radius */
     text-decoration: none;
     color: #ffffff;
     font-weight: 500;
@@ -109,70 +151,14 @@ h3 {
 }
 
 .btn-box a:first-child {
-    background-color: #ff4d00;
+    background-color: #ff4d00; /* Background color for the first button */
 }
-
 .btn-box a:first-child:hover {
-    background-color: #ff6a00;
-    border-color: #ff6a00;
+    background-color: #ff6a00; /* Hover state for the first button */
 }
 
 .btn-box a:last-child:hover {
-    background-color: rgba(255, 77, 0, 0.1);
-}
-.image {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    padding: 20px;
-}
-
-.image::before {
-    content: '';
-    position: absolute;
-    width: 80%;
-    height: 80%;
-    background: linear-gradient(45deg, rgba(255, 77, 0, 0.15), rgba(255, 140, 0, 0.15));
-    border-radius: 50%;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 0;
-    animation: pulse 3s ease-in-out infinite;
-}
-
-.image img {
-    max-width: 90%;
-    height: auto;
-    border-radius: 50%;
-    box-shadow: 0 0 30px rgba(255, 77, 0, 0.2),
-                0 0 60px rgba(255, 77, 0, 0.1),
-                inset 0 0 30px rgba(255, 77, 0, 0.1);
-    position: relative;
-    z-index: 1;
-    transition: transform 0.3s ease, box-shadow 0.5s ease;
-    border: 3px solid rgba(255, 77, 0, 0.3);
-}
-
-.image img:hover {
-    transform: scale(1.02) translateY(-5px);
-    box-shadow: 0 0 30px rgba(255, 77, 0, 0.4),
-                0 0 80px rgba(255, 77, 0, 0.2),
-                inset 0 0 30px rgba(255, 77, 0, 0.2);
-    border-color: rgba(255, 77, 0, 0.6);
-}
-
-@keyframes pulse {
-    0% {
-        transform: translate(-50%, -50%) scale(0.95);
-    }
-    50% {
-        transform: translate(-50%, -50%) scale(1.05);
-    }
-    100% {
-        transform: translate(-50%, -50%) scale(0.95);
-    }
+    background-color: rgba(255, 77, 0, 0.1); /* Hover state for the second button */
 }
 
 /* Projects Section */
@@ -190,12 +176,8 @@ h3 {
 
 .projects-container {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* Creates 2 equal-width columns */
-    grid-template-rows: repeat(2, auto); 
-    gap: 2rem 3rem;
-    padding: 2rem 0;
- max-width: 600px;
-   margin: 0 auto; 
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
 }
 
 .grid-item {
@@ -211,19 +193,12 @@ h3 {
 
 .grid-item img {
     width: 100%;
-    height: 300px;
-    object-fit: cover;
+    height: auto; /* Ensure images maintain aspect ratio */
 }
 
-.grid-item p {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    padding: 1rem;
-    background: rgba(0, 0, 0, 0.8);
-    color: #fff;
-    margin: 0;
-    text-align: center;
+/* Improved image display in grid items */
+.grid-item img {
+    max-height: 200px; /* Set a max height for images */
 }
 
 /* Contact Section */
@@ -242,7 +217,7 @@ h3 {
 .contact-link a {
     position: relative;
     display: inline-flex;
-    margin: 0 25px;
+    margin: 0px 25px 30px 30px;
     justify-content: center;
     align-items: center;
     width: 60px;
@@ -250,7 +225,7 @@ h3 {
     background: transparent;
     border: 2px solid #ff4d00;
     border-radius: 50%;
-    font-size: 28px;
+    font-size: 40px;
     color: #ff4d00;
     text-decoration: none;
     z-index: 1;
@@ -260,6 +235,7 @@ h3 {
 
 .contact-link a:hover {
     color: #0a0a0a;
+    background-color: #ff4d00;
 }
 
 .contact-link a::before {
@@ -278,27 +254,78 @@ h3 {
     width: 100%;
 }
 
-/* Responsive Design */
+/* Responsive Styles */
 @media (max-width: 768px) {
     header {
-        padding: 1rem 2rem;
+        padding: 1rem; /* Reduce padding */
+        flex-direction: column; /* Stack elements vertically */
+        align-items: flex-start; /* Align items to the start */
+    }
+
+    .sidebar {
+        left: -260px; /* Ensure sidebar is completely off-screen on small devices */
+    }
+
+    .sidebar-toggle {
+        top: 15px; /* Adjust position on small screens */
+        left: 15px; /* Adjust position on small screens */
     }
 
     #welcome-section {
-        grid-template-columns: 1fr;
-        padding: 4rem 2rem;
-        text-align: center;
+        grid-template-columns: 1fr; /* Stack content vertically */
+        padding: 4rem 2rem; /* Adjust padding */
+        text-align: center; /* Center align text */
     }
 
-    .welcome-text {
-        margin: 0 auto;
+    .image {
+        width: 100%; /* Ensure the image container fills the width */
+        height: auto; /* Maintain aspect ratio */
+        max-width: 300px; /* Set a max-width for small screens */
+        margin: 0 auto; /* Center the image */
     }
 
-    .btn-box {
-        justify-content: center;
+    .image img {
+        width: 100%; /* Ensure the image fills the container */
+        height: auto; /* Maintain aspect ratio */
     }
 
     .projects-container {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr; /* Stack projects vertically */
+    }
+
+    .grid-item {
+        margin: 20px 0; /* Adjust spacing */
+    }
+
+    .contact-section {
+        padding: 4rem 2rem; /* Adjust padding for mobile */
+    }
+
+    .contact-link a {
+        width: 50px; /* Adjust icon size */
+        height: 50px; /* Adjust icon size */
+        font-size: 24px; /* Adjust font size */
+    }
+
+    .btn-box {
+        flex-direction: column; /* Stack buttons vertically */
+        gap: 1rem; /* Add spacing between buttons */
+    }
+
+    .btn-box a {
+        width: 100%; /* Full-width buttons */
+        text-align: center; /* Center align text */
+    }
+}
+
+/* Landscape Mode Adjustments */
+@media (orientation: landscape) and (max-width: 768px) {
+    .projects-container {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* More columns in landscape */
+    }
+
+    .grid-item img {
+        height: auto; /* Ensure images fit properly */
+        max-height: auto; /* Remove max-height constraint */
     }
 }
