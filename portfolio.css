@@ -277,17 +277,61 @@ h3 {
         text-align: center; /* Center align text */
     }
 
-    .image {
-        width: 100%; /* Ensure the image container fills the width */
-        height: auto; /* Maintain aspect ratio */
-        max-width: 300px; /* Set a max-width for small screens */
-        margin: 0 auto; /* Center the image */
-    }
+  .image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 20px;
+}
 
-    .image img {
-        width: 100%; /* Ensure the image fills the container */
-        height: auto; /* Maintain aspect ratio */
+.image::before {
+    content: '';
+    position: absolute;
+    width: 80%;
+    height: 80%;
+    background: linear-gradient(45deg, rgba(255, 77, 0, 0.15), rgba(255, 140, 0, 0.15));
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 0;
+    animation: pulse 3s ease-in-out infinite;
+}
+
+.image img {
+    max-width: 90%;
+    height: auto;
+    border-radius: 50%;
+    box-shadow: 0 0 30px rgba(255, 77, 0, 0.2),
+                0 0 60px rgba(255, 77, 0, 0.1),
+                inset 0 0 30px rgba(255, 77, 0, 0.1);
+    position: relative;
+    z-index: 1;
+    transition: transform 0.3s ease, box-shadow 0.5s ease;
+    border: 3px solid rgba(255, 77, 0, 0.3);
+}
+
+.image img:hover {
+    transform: scale(1.02) translateY(-5px);
+    box-shadow: 0 0 30px rgba(255, 77, 0, 0.4),
+                0 0 80px rgba(255, 77, 0, 0.2),
+                inset 0 0 30px rgba(255, 77, 0, 0.2);
+    border-color: rgba(255, 77, 0, 0.6);
+}
+
+@keyframes pulse {
+    0% {
+        transform: translate(-50%, -50%) scale(0.95);
     }
+    50% {
+        transform: translate(-50%, -50%) scale(1.05);
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(0.95);
+    }
+}
+
 
     .projects-container {
         grid-template-columns: 1fr; /* Stack projects vertically */
